@@ -1,19 +1,29 @@
 const fs = require('fs');
 const cheerio = require('cheerio');
 const got = require('got');
+const imageDownloader = require('node-image-downloader');
 
 const mainUrl = 'https://memegen.link/examples';
 
-got(mainUrl).then(response => {
+got(mainUrl).then((response) => {
   const $ = cheerio.load(response.body);
 
-
   $('img').each((i, img) => {
-    const src = img.attribs.src;
-    console.log('https://memegen.link' + src);
+    const src = img.attribs.src.split('?')[0];
+    let readyLink = 'https://memegen.link' + src;
+    if (i < 10) {
+      console.log(readyLink);
+      imageDownloader({
+        imgs: [
+          {
+            uri: readyLink,
+            filename: '0' + i,
+          },
+        ],
+        dest: './memes',
+      }).catch(function (err) {
+        console.log(err);
+      });
+    }
   });
-}).catch(err => {
-  console.log(err);
 });
-
-
