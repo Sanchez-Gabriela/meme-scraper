@@ -1,4 +1,3 @@
-const fs = require('fs');
 const cheerio = require('cheerio');
 const got = require('got');
 const imageDownloader = require('node-image-downloader');
@@ -10,7 +9,7 @@ got(mainUrl).then((response) => {
 
   $('img').each((i, img) => {
     const src = img.attribs.src.split('?')[0];
-    let readyLink = 'https://memegen.link' + src;
+    const readyLink = 'https://memegen.link' + src;
     if (i < 10) {
       console.log(readyLink);
       imageDownloader({
