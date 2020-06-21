@@ -6,8 +6,6 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "got": "^10.4.0",
-    "node-image-downloader": "^1.0.7",
-    "request-promise": "^4.2.5",
-    "require": "^2.4.20"
+    "node-image-downloader": "^1.0.7"
   }
 }
