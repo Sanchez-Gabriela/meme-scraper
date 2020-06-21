@@ -9,13 +9,13 @@ got(mainUrl).then((response) => {
 
   $('img').each((i, img) => {
     const src = img.attribs.src.split('?')[0];
-    const readyLink = 'https://memegen.link' + src;
+    const linkString = 'https://memegen.link' + src;
     if (i < 10) {
-      console.log(readyLink);
+      console.log(linkString);
       imageDownloader({
         imgs: [
           {
-            uri: readyLink,
+            uri: linkString,
             filename: '0' + i,
           },
         ],
